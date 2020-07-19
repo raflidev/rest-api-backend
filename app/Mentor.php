@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Materi extends Model
+class Mentor extends Model
 {
-    public function kelas()
-    {
+    public function kelas(){
         return $this->belongsTo(Kelas::class);
     }
+    
 }

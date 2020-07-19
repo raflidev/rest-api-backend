@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMaterisTable extends Migration
+class AddUserIdToMentorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,8 @@ class CreateMaterisTable extends Migration
      */
     public function up()
     {
-        Schema::create('materis', function (Blueprint $table) {
-            $table->id();
-            $table->string('judul');
-            $table->integer('episode');
-            $table->string('slug');
-            $table->string('video');
-            $table->timestamps();
+        Schema::table('mentors', function (Blueprint $table) {
+            $table->foreignId('user_id')->nullable()->after('id'); 
         });
     }
 
@@ -30,6 +25,8 @@ class CreateMaterisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('materis');
+        Schema::table('mentors', function (Blueprint $table) {
+            $table->dropColumn('user_id');
+        });
     }
 }

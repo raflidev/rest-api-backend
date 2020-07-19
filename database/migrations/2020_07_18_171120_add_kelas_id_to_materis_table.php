@@ -14,7 +14,7 @@ class AddKelasIdToMaterisTable extends Migration
     public function up()
     {
         Schema::table('materis', function (Blueprint $table) {
-            $table->foreignId('kelas_id')->nullable()->after('materi_id');
+            $table->foreignId('kelas_id')->nullable()->after('id');
         });
     }
 

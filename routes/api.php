@@ -1,5 +1,5 @@
 <?php
-
+use App\Kelas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/', function(){
-    return "asd";
+Route::get('/kelas', function(){
+    // get kelas and materi 
+    return Kelas::with('materi', 'mentor')->get();
 });
