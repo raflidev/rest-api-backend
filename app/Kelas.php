@@ -12,6 +12,6 @@ class Kelas extends Model
     }
     public function mentor()
     {
-        return $this->hasManyThrough(Mentor::class,User::class,'id', 'kelas_id');
+        return $this->hasOneThrough(User::class, Mentor::class, 'kelas_id','id','id','user_id');
     }
 }
