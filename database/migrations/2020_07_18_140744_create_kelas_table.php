@@ -22,6 +22,7 @@ class CreateKelasTable extends Migration
             $table->string('description');
             $table->string('image');
             $table->boolean('populer');
+            $table->boolean('pilihan');
             $table->string('tingkat');
             $table->timestamps();
         });
