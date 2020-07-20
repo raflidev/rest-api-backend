@@ -8,7 +8,8 @@ class Kelas extends Model
 {
     public function materi()
     {
-        return $this->hasMany(Materi::class);
+        // return $this->hasManyThrough(Subateri::class,Materi::class,'submateri_id','id','id','submateri_id');
+        return $this->hasManyThrough(Materi::class,Submateri::class,'id', 'submateri_id');
     }
     public function mentor()
     {

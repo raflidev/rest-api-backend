@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddKelasIdToMaterisTable extends Migration
+class AddKelasIdToSubmaterisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class AddKelasIdToMaterisTable extends Migration
      */
     public function up()
     {
-        Schema::table('materis', function (Blueprint $table) {
+        Schema::table('submateris', function (Blueprint $table) {
             $table->foreignId('kelas_id')->nullable()->after('id');
         });
     }
@@ -25,7 +25,7 @@ class AddKelasIdToMaterisTable extends Migration
      */
     public function down()
     {
-        Schema::table('materis', function (Blueprint $table) {
+        Schema::table('submateris', function (Blueprint $table) {
             $table->dropColumn('kelas_id');
         });
     }
