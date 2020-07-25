@@ -2,6 +2,7 @@
 use App\Kelas;
 use App\User;
 use App\Submateri;
+use App\Mading;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -44,3 +45,10 @@ Route::get('/user', function(){
     return User::all();
 });
 // END ROUTE USER
+
+//  ROUTE MADING
+Route::get('/mading', function(){
+    return Mading::with('user')->get();
+});
+
+// END ROUTE MADING

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMadingsTable extends Migration
+class AddUserIdToMadingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,8 @@ class CreateMadingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('madings', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama');
-            $table->string('slug');
-            // add id_user
-            $table->string('link');
-            $table->timestamps();
+        Schema::table('madings', function (Blueprint $table) {
+            $table->foreignId('user_id')->nullable()->after('id');
         });
     }
 
@@ -30,6 +25,8 @@ class CreateMadingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('madings');
+        Schema::table('madings', function (Blueprint $table) {
+            $table->dropColumn('user_id');
+        });
     }
 }
