@@ -53,7 +53,7 @@ Route::get('/mading', function(){
 Route::get('/mading/{id}', function($id){
     return Mading::with('user:id,nama,skill')->where('id', $id)->get();
 });
-Route::get('/mading/user/{username}', function($username){
-    return Mading::with('user:id,nama,skill')->where('user_id', $username)->get();
+Route::get('/mading/user/{id}', function($id){
+    return Mading::with('user:id,nama,skill')->where('user_id', $id)->get();
 });
 // END ROUTE MADING
