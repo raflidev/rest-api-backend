@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddSubmateriIdToMaterisTable extends Migration
+class CreateEpisodesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,13 @@ class AddSubmateriIdToMaterisTable extends Migration
      */
     public function up()
     {
-        Schema::table('materis', function (Blueprint $table) {
-            $table->foreignId('submateri_id')->nullable()->after('id');
+        Schema::create('episodes', function (Blueprint $table) {
+            $table->id();
+            $table->string('judul');
+            $table->integer('episode');
+            $table->string('slug');
+            $table->string('video');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +30,6 @@ class AddSubmateriIdToMaterisTable extends Migration
      */
     public function down()
     {
-        Schema::table('materis', function (Blueprint $table) {
-            $table->dropColumn('submateri_id');
-        });
+        Schema::dropIfExists('episodes');
     }
 }

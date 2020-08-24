@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMaterisTable extends Migration
+class AddKelasIdToMaterisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class CreateMaterisTable extends Migration
      */
     public function up()
     {
-        Schema::create('materis', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama');
-            $table->timestamps();
+        Schema::table('materis', function (Blueprint $table) {
+            $table->foreignId('kelas_id')->nullable()->after('id');
         });
     }
 
@@ -27,6 +25,8 @@ class CreateMaterisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('materis');
+        Schema::table('materis', function (Blueprint $table) {
+            $table->dropColumn('kelas_id');
+        });
     }
 }

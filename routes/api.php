@@ -2,7 +2,9 @@
 use App\Kelas;
 use App\User;
 use App\Submateri;
+use App\Materi;
 use App\Mading;
+use App\Submading;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,7 +25,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // ROUTE KELAS
 Route::get('/kelas', function(){
-    return Kelas::with('materi', 'mentor')->get();
+    return Kelas::with('materi.submateri','mentor')->get();
 });
 Route::get('/kelas/{id}', function($id){
     return Kelas::with('materi', 'mentor')->find($id);
@@ -36,7 +38,7 @@ Route::get('/kelas/pilihan', function(){
 });
 Route::get('/kelas/materi/{materi_id}', function($materi_id){
     // get sub materi 
-    return Submateri::with('materi')->where('id', $materi_id)->get();
+    return Materi::with('materi')->where('id', $materi_id)->get();
 });
 // END KELAS ROUTE
 
