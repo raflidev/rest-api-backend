@@ -16,6 +16,9 @@ class CreateSubmaterisTable extends Migration
         Schema::create('submateris', function (Blueprint $table) {
             $table->id();
             $table->string('judul');
+            $table->integer('episode');
+            $table->string('slug');
+            $table->string('video');
             $table->timestamps();
         });
     }
