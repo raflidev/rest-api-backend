@@ -2,6 +2,7 @@
 
 use App\Kelas;
 use App\User;
+use App\Ulasan;
 use App\Materi;
 use App\Mading;
 use Illuminate\Http\Request;
@@ -29,10 +30,10 @@ Route::get('/kelas', function () {
 Route::get('/kelas/{id}', function ($id) {
     return Kelas::with('materi', 'mentor')->find($id);
 });
-Route::get('/populer/', function () {
+Route::get('/kelas/sort/populer/', function () {
     return Kelas::with('materi.submateri', 'mentor')->where('populer', '=', 1)->get();
 });
-Route::get('/pilihan', function () {
+Route::get('/kelas/sort/pilihan', function () {
     return Kelas::with('materi.submateri', 'mentor')->where('pilihan', '=', 1)->get();
 });
 Route::get('/kelas/materi/{materi_id}', function ($materi_id) {
@@ -57,3 +58,11 @@ Route::get('/mading/user/{id}', function ($id) {
     return Mading::with('user:id,nama,skill')->where('user_id', $id)->get();
 });
 // END ROUTE MADING
+
+// ROUTE ULASAN
+Route::get('/ulasan', function () {
+    return Ulasan::with('kelas:id,name','user:id,nama,username,skill')->get();
+});
+Route::get('/ulasan/user/{id}', function ($id) {
+    return Ulasan::with('kelas:id,name','user:id,nama,username,skill')->where('user_id','=',$id)->get();
+});
