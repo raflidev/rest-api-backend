@@ -15,6 +15,8 @@ class CreateBenefitsTable extends Migration
     {
         Schema::create('benefits', function (Blueprint $table) {
             $table->id();
+            $table->string("icon");
+            $table->string("isi");
             $table->timestamps();
         });
     }

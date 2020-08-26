@@ -15,6 +15,7 @@ class CreateKeunggulansTable extends Migration
     {
         Schema::create('keunggulans', function (Blueprint $table) {
             $table->id();
+            $table->String("isi");
             $table->timestamps();
         });
     }
